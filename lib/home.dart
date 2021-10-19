@@ -15,18 +15,17 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     player = new AudioCache();
-    player.loadAll([
-      'assets_note1.wav',
-      'assets_note2.wav',
-      'assets_note3.wav',
-      'assets_note4.wav',
-      'assets_note5.wav',
-      'assets_note6.wav',
-      'assets_note7.wav'
-    ]);
+    // player.loadAll([
+    //   'assets_note1.wav',
+    //   'assets_note2.wav',
+    //   'assets_note3.wav',
+    //   'assets_note4.wav',
+    //   'assets_note5.wav',
+    //   'assets_note6.wav',
+    //   'assets_note7.wav'
+    // ]);
   }
 
   @override
@@ -34,88 +33,85 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Expanded(
-            flex: 1,
-            child: GestureDetector(
-              onTap: _onTapped(1),
-              child: Container(
-                height: 20,
-                color: Colors.red,
-              ),
+          SizedBox(
+            height: 94.5,
+            child: TextButton(
+              onPressed: _onTapped(1),
+              style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.red)),
+              child: SizedBox(),
             ),
           ),
-          Expanded(
-            flex: 1,
-            child: GestureDetector(
-              onTap: _onTapped(2),
-              child: Container(
-                height: 20,
-                color: Colors.orange,
-              ),
+          SizedBox(
+            height: 94.5,
+            child: TextButton(
+              onPressed: _onTapped(2),
+              style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.orange)),
+              child: SizedBox(),
             ),
           ),
-          Expanded(
-            flex: 1,
-            child: GestureDetector(
-              onTap: _onTapped(3),
-              child: Container(
-                height: 20,
-                color: Colors.yellow,
-              ),
+          SizedBox(
+            height: 94.5,
+            child: TextButton(
+              onPressed: _onTapped(3),
+              style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.yellow)),
+              child: SizedBox(),
             ),
           ),
-          Expanded(
-            flex: 1,
-            child: GestureDetector(
-              onTap: _onTapped(4),
-              child: Container(
-                height: 20,
-                color: Colors.green,
-              ),
+          SizedBox(
+            height: 94.5,
+            child: TextButton(
+              onPressed: _onTapped(4),
+              style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.green)),
+              child: SizedBox(),
             ),
           ),
-          Expanded(
-            flex: 1,
-            child: GestureDetector(
-              onTap: _onTapped(5),
-              child: Container(
-                height: 20,
-                color: Colors.blue,
-              ),
+          SizedBox(
+            height: 94.5,
+            child: TextButton(
+              onPressed: _onTapped(5),
+              style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.blue)),
+              child: SizedBox(),
             ),
           ),
-          Expanded(
-            flex: 1,
-            child: GestureDetector(
-              onTap: _onTapped(6),
-              child: Container(
-                height: 20,
-                color: Colors.indigo,
-              ),
+          SizedBox(
+            height: 94.5,
+            child: TextButton(
+              style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.indigo)),
+              child: SizedBox(),
+              onPressed: _onTapped(6),
             ),
           ),
-          Expanded(
-            flex: 1,
-            child: GestureDetector(
-              onTap: _onTapped(7),
-              child: Container(
-                height: 20,
-                color: Colors.deepPurple,
-              ),
+          SizedBox(
+            height: 94.5,
+            child: TextButton(
+              style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all(Colors.deepPurple)),
+              child: SizedBox(),
+              onPressed: _onTapped(7),
             ),
-          )
+          ),
         ],
       ),
     );
   }
 
   _onTapped(int i) {
-    print("clicked  $i button and audio");
+    // player.fixedPlayer!.stop();
+    log("clicked  $i button and audio");
     try {
-      player.play('assets_note${i}.wav');
+      player.play('assets_note${i}.wav',
+          mode: PlayerMode.LOW_LATENCY, stayAwake: false);
     } catch (e) {
-      log(e.toString());
+      log("error is ${e.toString()}");
     }
   }
 }
