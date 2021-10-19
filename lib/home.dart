@@ -111,7 +111,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   _onTapped(int i) {
-    print("clicked  $i");
+    print("clicked  $i button and audio");
     try {
       player.play('assets_note${i}.wav');
     } catch (e) {
