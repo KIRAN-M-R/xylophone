@@ -62,7 +62,9 @@ class _HomePageState extends State<HomePage> {
   _buttons(int i, var col) {
     return Expanded(
       child: TextButton(
-        onPressed: _onTapped(1),
+        onPressed: () {
+          _onTapped(i);
+        },
         style: ButtonStyle(backgroundColor: MaterialStateProperty.all(col)),
         child: SizedBox(),
       ),
