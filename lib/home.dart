@@ -29,7 +29,19 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        elevation: 50,
+        shadowColor: Colors.black,
+        title: Text(
+          'XyloPhone',
+          style: TextStyle(
+            fontSize: 40,
+            fontStyle: FontStyle.italic,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -61,13 +73,12 @@ class _HomePageState extends State<HomePage> {
 
   _buttons(int i, var col) {
     return Expanded(
-      child: TextButton(
-        onPressed: () {
-          _onTapped(i);
-        },
-        style: ButtonStyle(backgroundColor: MaterialStateProperty.all(col)),
-        child: SizedBox(),
-      ),
-    );
+        child: TextButton(
+      onPressed: () {
+        _onTapped(i);
+      },
+      style: ButtonStyle(backgroundColor: MaterialStateProperty.all(col)),
+      child: SizedBox(),
+    ));
   }
 }
