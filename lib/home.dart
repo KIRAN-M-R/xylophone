@@ -11,12 +11,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late AudioCache player;
-
   @override
   void initState() {
     super.initState();
-    player = new AudioCache();
+
     // player.loadAll([
     //   'assets_note1.wav',
     //   'assets_note2.wav',
@@ -35,70 +33,13 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          SizedBox(
-            height: 94.5,
-            child: TextButton(
-              onPressed: _onTapped(1),
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.red)),
-              child: SizedBox(),
-            ),
-          ),
-          SizedBox(
-            height: 94.5,
-            child: TextButton(
-              onPressed: _onTapped(2),
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.orange)),
-              child: SizedBox(),
-            ),
-          ),
-          SizedBox(
-            height: 94.5,
-            child: TextButton(
-              onPressed: _onTapped(3),
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.yellow)),
-              child: SizedBox(),
-            ),
-          ),
-          SizedBox(
-            height: 94.5,
-            child: TextButton(
-              onPressed: _onTapped(4),
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.green)),
-              child: SizedBox(),
-            ),
-          ),
-          SizedBox(
-            height: 94.5,
-            child: TextButton(
-              onPressed: _onTapped(5),
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.blue)),
-              child: SizedBox(),
-            ),
-          ),
-          SizedBox(
-            height: 94.5,
-            child: TextButton(
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.indigo)),
-              child: SizedBox(),
-              onPressed: _onTapped(6),
-            ),
-          ),
-          SizedBox(
-            height: 94.5,
-            child: TextButton(
-              style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all(Colors.deepPurple)),
-              child: SizedBox(),
-              onPressed: _onTapped(7),
-            ),
-          ),
+          _buttons(1, Colors.red),
+          _buttons(2, Colors.orange),
+          _buttons(3, Colors.yellow),
+          _buttons(4, Colors.green),
+          _buttons(5, Colors.blue),
+          _buttons(6, Colors.indigo),
+          _buttons(7, Colors.deepPurple),
         ],
       ),
     );
@@ -106,12 +47,25 @@ class _HomePageState extends State<HomePage> {
 
   _onTapped(int i) {
     // player.fixedPlayer!.stop();
+
+    final player = new AudioCache();
     log("clicked  $i button and audio");
+
     try {
       player.play('assets_note${i}.wav',
           mode: PlayerMode.LOW_LATENCY, stayAwake: false);
     } catch (e) {
       log("error is ${e.toString()}");
     }
+  }
+
+  _buttons(int i, var col) {
+    return Expanded(
+      child: TextButton(
+        onPressed: _onTapped(1),
+        style: ButtonStyle(backgroundColor: MaterialStateProperty.all(col)),
+        child: SizedBox(),
+      ),
+    );
   }
 }
